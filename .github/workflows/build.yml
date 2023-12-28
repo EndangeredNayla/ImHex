@@ -139,7 +139,7 @@ jobs:
           - suffix: ""
             custom_glfw: false
 
-    name: 🍎 macOS 12.0${{matrix.suffix}}
+    name: 🍎 macOS 12.0${{matrix.suffix}} x86_64
 
     steps:
     - name: 🧰 Checkout
@@ -255,7 +255,7 @@ jobs:
           - suffix: ""
             custom_glfw: false
 
-    name: 🍎 macOS 12.0${{matrix.suffix}}
+    name: 🍎 macOS 12.0${{matrix.suffix}} ARM
 
     steps:
     - name: 🧰 Checkout
