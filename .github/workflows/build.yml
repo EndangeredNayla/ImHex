@@ -316,13 +316,15 @@ jobs:
         mkdir build
         cd build
 
-        cmake -G "Ninja"                                \
-          -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}        \
-          -DBUILD_SHARED_LIBS=ON                        \
-          -DCMAKE_C_COMPILER_LAUNCHER=ccache            \
-          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache          \
-          -DCMAKE_OBJC_COMPILER_LAUNCHER=ccache         \
-          -DCMAKE_OBJCXX_COMPILER_LAUNCHER=ccache       \
+        cmake -G "Ninja"                                                     \
+          -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}                             \
+          -DBUILD_SHARED_LIBS=ON                                             \
+          -DCMAKE_C_COMPILER_LAUNCHER=ccache                                 \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache                               \
+          -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -target arm64-apple-macos11"     \
+          -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -target arm64-apple-macos11" \
+          -DCMAKE_OBJC_COMPILER_LAUNCHER=ccache                              \
+          -DCMAKE_OBJCXX_COMPILER_LAUNCHER=ccache                            \
         ..
         ninja install
 
