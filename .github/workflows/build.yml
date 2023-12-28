@@ -243,8 +243,7 @@ jobs:
         name: macOS DMG${{matrix.suffix}} x86_64
         path: build/*.dmg
 
-  # MacOS build
-  macos:
+  macos-arm64:
     runs-on: macos-12
 
     strategy:
@@ -345,11 +344,11 @@ jobs:
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache                                                      \
           -DCMAKE_OBJC_COMPILER_LAUNCHER=ccache                                                     \
           -DCMAKE_OBJCXX_COMPILER_LAUNCHER=ccache                                                   \
-          -DCMAKE_C_FLAGS=${CMAKE_C_FLAGS} -target arm64-apple-macos11                              \
-          -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS} -target arm64-apple-macos11                          \
           -DIMHEX_PATTERNS_PULL_MASTER=ON                                                           \
           -DIMHEX_COMMIT_HASH_SHORT="${GITHUB_SHA::7}"                                              \
           -DIMHEX_COMMIT_HASH_LONG="${GITHUB_SHA}"                                                  \
+          -DCMAKE_C_FLAGS=${CMAKE_C_FLAGS} -target arm64-apple-macos11                              \
+          -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS} -target arm64-apple-macos11                          \
           -DIMHEX_COMMIT_BRANCH="${GITHUB_REF##*/}"                                                 \
           -DCPACK_PACKAGE_FILE_NAME="imhex-${{env.IMHEX_VERSION}}-macOS${{matrix.suffix}}-arm64"   \
           ..
